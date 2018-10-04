@@ -96,8 +96,10 @@ new Vue({
       // 清空二维码所在 container #qrcode 的标签内容
       // 以避免重复生成二维码
       // 这一方法并不完美, 将来可以改进
-      document.getElementById('qrcode').innerHTML = '';
-      let qrcode = new QRCode(document.getElementById('qrcode'), {
+      let qrElement = document.getElementById('qrcode');
+      if (!qrElement) return;
+      qrElement.innerHTML = '';
+      let qrcode = new QRCode(qrElement, {
         text: url,
         width: 200,
         height: 200,
