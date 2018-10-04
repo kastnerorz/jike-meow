@@ -392,7 +392,7 @@ div#image {
   bottom: 0;
   left: 0;
   font-size: 0;
-  background: rgba(255, 255, 255, .8);
+  background: #fff;
   overflow: hidden;
   z-index: 999;
 }
