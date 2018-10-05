@@ -26,7 +26,7 @@ new Vue({
       notifications: [], // 通知消息列表
       isNotificationLoading: false,
       lastCheckedNotificationId: '', // 通知列表分页显示
-      isNotificationCheckingFunctionEnabled: true, // 历史位置记录功能状态
+      isNotificationCheckingFunctionEnabled: '1', // 历史位置记录功能状态
       lastNotificationCheckingTime: '', // 最近一次查看通知的时间
       enlargedImage: '' // 图片查看器
     }
@@ -51,6 +51,9 @@ new Vue({
         _this.accessToken = result['access-token'];
         _this.isUIEnabled = true;
         _this.getNotificationList();
+        if (result['notification-function']) {
+          _this.isNotificationCheckingFunctionEnabled = (result['notification-function'] === 'true');
+        }
 
         // 通知 background.js 开始建立 socket 连接
         axios({
@@ -281,6 +284,13 @@ new Vue({
           return Math.round(lastTime / 31104000000) + '年前';
         }
       }
+    },
+    // 历史阅读位置记录
+    toggleNotificationFunction(response) {
+      chrome.storage.local.set({
+        'notification-function': response.toString()
+      });
+      this.isNotificationCheckingFunctionEnabled = response;
     },
     // 网页登录
     logIn() {

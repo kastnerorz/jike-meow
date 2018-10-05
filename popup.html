@@ -378,10 +378,10 @@
               style="opacity: .6; margin-right: 10px;">刷新中…</button>
       <button class="half"
               v-if="!isNotificationCheckingFunctionEnabled"
-              @click.self.stop="isNotificationCheckingFunctionEnabled = true">开启阅读历史</button>
+              @click.self.stop="toggleNotificationFunction(true)">开启阅读历史</button>
       <button class="half"
               v-else
-              @click.self.stop="isNotificationCheckingFunctionEnabled = false">关闭阅读历史</button>
+              @click.self.stop="toggleNotificationFunction(false)">关闭阅读历史</button>
     </div>
     <!-- 图片查看器 -->
     <div id="image"
