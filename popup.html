@@ -212,7 +212,8 @@
         <!-- 回复了你 -->
         <div class="n-item-list"
              v-else-if="item.type === 'REPLIED_TO_PERSONAL_UPDATE_COMMENT' ||
-             item.type === 'REPLY_TO_COMMENT'">
+             item.type === 'REPLY_TO_COMMENT' ||
+             item.type === 'REPLIED_TO_ANSWER_COMMENT'">
           <a class="n-comment-avatar"
              target="_blank"
              :class="{ verified: item.actionItem.users[0].isVerified }"
@@ -243,6 +244,7 @@
               <span v-if="!item.referenceItem.referenceImageUrl"
                     v-html="item.referenceItem.content.replace(/\n/g, '<br/>')"></span>
             </a>
+            <!-- 动态 - 有图 -->
             <a class="n-comment-post"
                v-else-if="item.referenceItem.referenceImageUrl && item.type === 'REPLIED_TO_ANSWER_COMMENT'"
                :style="{ backgroundImage: 'url(' + item.referenceItem.referenceImageUrl + ')' }">
