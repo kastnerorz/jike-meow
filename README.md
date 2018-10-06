@@ -35,7 +35,7 @@
 
 ## Firefox 版本
 
-由 @SpencerWoo98 移植的 [Mozilla Firefox](https://github.com/spencerwoo98/jike-meow) 版已在官方商店上架。
+由 @SpencerWoo 移植的 [Mozilla Firefox](https://github.com/spencerwoo98/jike-meow) 版已在官方商店上架。
 
 ## 前言
 
