@@ -9,7 +9,7 @@
 [![License: MIT](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)
 
 基于 Vue.js 和 WebSocket 开发的第三方即刻通知插件。  
-**特别感谢 [@糯米鸡](http://m.okjike.com/user/viko16) 提供的巨大帮助！️**❤️
+特别感谢 [@糯米鸡](http://m.okjike.com/user/viko16) 提供的巨大帮助！️❤️
 
 ## 主要功能
 
@@ -21,7 +21,7 @@
 ## 项目结构
 
 * **./images** Chrome Store, GitHub, 图标等素材
-* **./scripts** 引用的第三方库和 Content Scripts
+* **./scripts** 引用的第三方库和内容脚本
 * **./scripts/store-token.js** 「网页登录」脚本
 * **background.js** 「开启消息通知角标」脚本
 * **popup.js** 插件主视图的功能
