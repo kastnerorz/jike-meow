@@ -39,10 +39,6 @@ div#app {
   overflow: hidden;
 }
 
-div#app.full {
-  width: 350px;
-}
-
 /* 登录 */
 
 div#login {
@@ -50,18 +46,13 @@ div#login {
   margin: auto;
 }
 
-img#qrcode {
-  display: block;
-  margin: -5px auto;
-}
-
-div#qrcode-container {
+div#login-qrcode {
   display: block;
   height: 200px;
   width: 200px;
 }
 
-div.qrcode-framer {
+div.login-qrcode-framer {
   display: block;
   position: absolute;
   top: 0;
@@ -74,7 +65,7 @@ div.qrcode-framer {
   z-index: 99;
 }
 
-div.qrcode-framer > p {
+div.login-qrcode-framer > p {
   position: absolute;
   width: 120px;
   padding: 5px 0;
@@ -89,7 +80,7 @@ div.qrcode-framer > p {
   border-radius: 8px;
 }
 
-div.qrcode-framer > p > b {
+div.login-qrcode-framer > p > b {
   color: #03a9f4;
 }
 
@@ -98,8 +89,8 @@ div.qrcode-framer > p > b {
 div#notification {
   display: block;
   height: 400px;
-  width: 380px;
-  padding-right: 30px !important;
+  width: 400px;
+  padding: 0 20px;
   overflow-x: hidden;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;

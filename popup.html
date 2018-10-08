@@ -9,22 +9,24 @@
 </head>
 
 <body>
-  <div id="app"
-       :class="{ full: accessToken && notifications && isUIEnabled }">
+  <div id="app">
     <!-- 登录 -->
     <div id="login"
-         v-if="!accessToken && isUIEnabled">
-      <div id="qrcode-container">
-        <div class="qrcode-framer"
+         v-if="(!authToken || !refreshToken || !accessToken) && isUIEnabled">
+      <div id="login-qrcode"
+           @mouseover.stop="isQrCodeLoading = true"
+           @mouseleave.stop="if (!isQrCodeScanning) isQrCodeLoading = false">
+        <div class="login-qrcode-framer"
              v-if="isQrCodeLoading">
           <p v-if="isQrCodeScanning">请在手机上点击<br><b>确认登陆</b></p>
         </div>
-        <div id="qrcode"></div>
+        <div id="login-qrcode-container"
+             ref="login-qrcode"></div>
       </div>
     </div>
     <!-- 通知列表 -->
     <div id="notification"
-         v-if="accessToken && notifications && isUIEnabled">
+         v-if="authToken && refreshToken && accessToken && notifications && isUIEnabled">
       <div class="n-item"
            v-for="item in notifications"
            :class="{ viewed: item.isViewed && isNotificationCheckingFunctionEnabled }">
@@ -385,9 +387,9 @@
     <!-- 按钮 -->
     <button class="primary"
             @click.self.stop="getUuid()"
-            v-if="!accessToken && isUIEnabled">刷新二维码</button>
+            v-if="(!authToken || !refreshToken || !accessToken) && isUIEnabled">刷新二维码</button>
     <div class="button-container"
-         v-if="accessToken && isUIEnabled">
+         v-if="authToken && refreshToken && accessToken && isUIEnabled">
       <button class="primary half"
               @click.self.stop="logIn()">网页登录</button>
       <button class="primary half"
@@ -395,7 +397,7 @@
               @click.self.stop="logOut()">退出登录</button>
     </div>
     <div class="button-container"
-         v-if="authToken">
+         v-if="authToken && refreshToken && accessToken && isUIEnabled">
       <button v-if="!isNotificationLoading"
               class="half"
               style="margin-right: 10px;"
@@ -412,7 +414,7 @@
     </div>
     <!-- 图片查看器 -->
     <div id="image"
-         v-if="enlargedImage">
+         v-if="enlargedImage && isUIEnabled">
       <div>
         <img :src="enlargedImage"
              @click.self.stop="enlargedImage = ''">
