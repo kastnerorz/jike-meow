@@ -35,7 +35,7 @@
 
 ## Firefox 版本
 
-由 @SpencerWoo 移植的 [Mozilla Firefox](https://github.com/spencerwoo98/jike-meow) 版已在官方商店上架。
+由 [@SpencerWoo](https://github.com/spencerwoo98) 移植的 [Mozilla Firefox](https://github.com/spencerwoo98/jike-meow) 版已在官方商店上架。
 
 ## 前言
 
@@ -45,10 +45,6 @@
 
 * 官方开发文档：[传送门](https://developer.chrome.com/extensions)
 * 非官方中文开发文档：[传送门](https://crxdoc-zh.appspot.com/extensions)
-
-## 逻辑示意图
-
-![逻辑示意图](./images/jike-meow-mindmap.png)
 
 ## F.A.Q
 
