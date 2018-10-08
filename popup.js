@@ -50,7 +50,7 @@ new Vue({
         _this.refreshToken = result['refresh-token'];
         _this.accessToken = result['access-token'];
         _this.isUIEnabled = true;
-        _this.getNotificationList();
+        _this.getNotificationList('refresh');
         if (result['notification-function']) {
           _this.isNotificationCheckingFunctionEnabled = (result['notification-function'] === 'true');
         }
@@ -207,7 +207,6 @@ new Vue({
       if (status === 'refresh') {
         _this.notifications = [];
         _this.lastCheckedNotificationId = '';
-        chrome.browserAction.setBadgeText({ text: '' });
       }
 
       axios({
@@ -225,6 +224,7 @@ new Vue({
       })
         .then(function (response) {
           const res = response.data;
+          if (status === 'refresh') chrome.browserAction.setBadgeText({ text: '' });
 
           // 获取上次刷新动态的时间
           chrome.storage.local.get(null, function (result) {
