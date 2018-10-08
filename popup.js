@@ -207,6 +207,7 @@ new Vue({
       if (status === 'refresh') {
         _this.notifications = [];
         _this.lastCheckedNotificationId = '';
+        chrome.browserAction.setBadgeText({ text: '' });
       }
 
       axios({
@@ -224,7 +225,6 @@ new Vue({
       })
         .then(function (response) {
           const res = response.data;
-          chrome.browserAction.setBadgeText({ text: '' });
 
           // 获取上次刷新动态的时间
           chrome.storage.local.get(null, function (result) {
