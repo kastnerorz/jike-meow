@@ -26,6 +26,7 @@
     </div>
     <!-- 通知列表 -->
     <div id="notification"
+         @scroll.passive="notificationScrolling()"
          v-if="authToken && refreshToken && accessToken && notifications && isUIEnabled">
       <div class="n-item"
            v-for="item in notifications"

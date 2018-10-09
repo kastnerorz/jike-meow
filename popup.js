@@ -242,18 +242,6 @@ new Vue({
               'last-check-notifications-time': newTime
             });
             _this.isNotificationLoading = false;
-
-            // 滚动加载
-            var notificationDom = document.getElementById('notification');
-            notificationDom.addEventListener('scroll', function () {
-              var scrollHeight = notificationDom.scrollHeight;
-              var scrollTop = notificationDom.scrollTop;
-              if (scrollHeight - scrollTop < 700 && _this.isNotificationLoading === false) {
-                _this.lastCheckedNotificationId = _this.notifications[_this.notifications.length - 1].id;
-                _this.getNotificationList();
-                return;
-              }
-            })
           });
         })
         .catch(function () {
@@ -261,6 +249,17 @@ new Vue({
           _this.isError = true;
           return;
         });
+    },
+    notificationScrolling() {
+      let _this = this
+      let notificationDom = document.getElementById('notification');
+      let scrollHeight = notificationDom.scrollHeight;
+      let scrollTop = notificationDom.scrollTop;
+      if (scrollHeight - scrollTop < 700 && _this.isNotificationLoading === false) {
+        _this.lastCheckedNotificationId = _this.notifications[_this.notifications.length - 1].id;
+        _this.getNotificationList();
+        return;
+      }
     },
     // 时间格式转换
     reformatTime(updateTime) {
