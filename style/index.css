@@ -90,7 +90,7 @@ div#notification {
   display: block;
   height: 400px;
   width: 400px;
-  padding: 0 20px;
+  padding: 10px 20px 0 20px;
   overflow-x: hidden;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
@@ -115,7 +115,7 @@ div.n-item-list {
 
 div.n-item {
   padding-bottom: 5px;
-  transition: opacity .3s linear;
+  transition: opacity .25s linear;
 }
 
 div.n-item:hover {
@@ -123,7 +123,7 @@ div.n-item:hover {
 }
 
 div.n-item.viewed {
-  opacity: .4;
+  opacity: .2;
 }
 
 div.n-item + div > div {
@@ -329,7 +329,7 @@ div.n-time-display {
 
 /* 按钮 */
 
-button {
+button.qr {
   cursor: pointer;
   display: block;
   font-size: 14px;
@@ -350,27 +350,50 @@ button {
 div.button-container {
   display: block;
   margin: auto;
+  padding-top: 15px;
   text-align: center;
   border-top: 1px solid #f0f3f5;
 }
 
-div.button-container + div {
-  border-top: 0;
-}
-
-button.warn {
-  color: #fff;
-  background: #e4583e;
-}
-
-button.primary {
-  background: linear-gradient(105deg, #fad961, #ffe411);
-}
-
-button.half {
+div.button-container button {
+  cursor: pointer;
   display: inline-block;
   vertical-align: middle;
-  width: 125px;
+  height: 50px;
+  width: 50px;
+  background: #f0f3f5 center no-repeat;
+  outline: 0;
+  border: 1px solid #f0f3f5;
+  border-radius: 50%;
+  user-select: none;
+}
+
+div.button-container button.disabled {
+  background-color: #fff;
+}
+
+div.button-container > button + button {
+  margin-left: 10px;
+}
+
+div.button-container > button:first-child {
+  background-image: url('../images/website-ico.svg');
+  background-size: 28px;
+}
+
+div.button-container > button:nth-child(2) {
+  background-image: url('../images/refresh-ico.svg');
+  background-size: 24px;
+}
+
+div.button-container > button:nth-child(3) {
+  background-image: url('../images/history-ico.svg');
+  background-size: 28px;
+}
+
+div.button-container > button:last-child {
+  background-image: url('../images/logout-ico.svg');
+  background-size: 22px;
 }
 
 /* 该动态已删除 */
@@ -419,15 +442,21 @@ div#image img {
 div#image span {
   display: block;
   position: absolute;
-  bottom: 10px;
-  left: 10px;
+  bottom: 20px;
+  left: calc(50% - 50px);
   font-size: 14px;
   font-weight: 500;
   line-height: 32px;
   text-align: center;
-  padding: 0 15px;
+  width: 100px;
   border-radius: 18px;
   background: linear-gradient(105deg, #fad961, #ffe411);
   user-select: none;
+  opacity: .5;
+  transition: opacity .25s linear;
   z-index: 1000;
+}
+
+div#image span:hover {
+  opacity: 1;
 }

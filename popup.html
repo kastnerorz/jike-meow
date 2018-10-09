@@ -386,39 +386,38 @@
          @click.self.stop="getNotificationList()">🌚 加载失败，请点击重试</p>
     </div>
     <!-- 按钮 -->
-    <button class="primary"
+    <button class="qr"
+            title="刷新二维码"
             @click.self.stop="getUuid()"
             v-if="(!authToken || !refreshToken || !accessToken) && isUIEnabled">刷新二维码</button>
     <div class="button-container"
          v-if="authToken && refreshToken && accessToken && isUIEnabled">
-      <button class="primary half"
-              @click.self.stop="logIn()">网页登录</button>
-      <button class="primary half"
-              style="margin-left: 10px;"
-              @click.self.stop="logOut()">退出登录</button>
-    </div>
-    <div class="button-container"
-         v-if="authToken && refreshToken && accessToken && isUIEnabled">
+      <button title="登录网页版"
+              @click.self.stop="logIn()"></button>
       <button v-if="!isNotificationLoading"
-              class="half"
-              style="margin-right: 10px;"
-              @click.self.stop="getNotificationList('refresh')">查看最新通知</button>
+              title="查看新通知"
+              @click.self.stop="getNotificationList('refresh')"></button>
       <button v-else="isNotificationLoading"
-              class="half"
-              style="opacity: .6; margin-right: 10px;">刷新中…</button>
-      <button class="half"
+              title="刷新中…"
+              disabled
+              style="opacity: .6;"></button>
+      <button title="开启阅读历史功能"
+              class="disabled"
               v-if="!isNotificationCheckingFunctionEnabled"
-              @click.self.stop="toggleNotificationFunction(true)">开启阅读历史</button>
-      <button class="half"
+              @click.self.stop="toggleNotificationFunction(true)"></button>
+      <button title="关闭阅读历史功能"
               v-else
-              @click.self.stop="toggleNotificationFunction(false)">关闭阅读历史</button>
+              @click.self.stop="toggleNotificationFunction(false)"></button>
+      <button title="退出登录"
+              @click.self.stop="logOut()"></button>
     </div>
     <!-- 图片查看器 -->
     <div id="image"
          v-if="enlargedImage && isUIEnabled">
       <div>
         <img :src="enlargedImage"
-             @click.self.stop="enlargedImage = ''">
+             @load="isEnlargedImageLoading = false"
+             @click.self.stop="enlargedImage = ''; isEnlargedImageLoading = false;">
         <span @click.self.stop="openImage()">查看原图</span>
       </div>
     </div>

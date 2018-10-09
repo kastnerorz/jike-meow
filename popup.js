@@ -19,6 +19,7 @@ new Vue({
       isError: false, // 通知列表加载失败
       isNotificationLoading: false, // 通知列表正在加载指示
       isNotificationCheckingFunctionEnabled: '1', // 历史位置记录功能状态
+      isEnlargedImageLoading: false, // 图片查看器加载指示
       apiURL: 'https://app.jike.ruguoapp.com', // 全局 API 地址
       currentPageURL: '', // 当前捕捉到的页面地址
       uuid: '',
@@ -343,6 +344,7 @@ new Vue({
     // 打开图片
     openImage() {
       let _this = this;
+      _this.isEnlargedImageLoading = true;
       if (_this.enlargedImage) window.open(_this.enlargedImage);
     }
   }
