@@ -415,10 +415,14 @@
     <div id="image"
          v-if="enlargedImage && isUIEnabled">
       <div>
+        <div id="image-func">
+          <i @click.self.stop="openImage()"
+             title="在浏览器中查看原图"></i>
+          <i @click.self.stop="enlargedImage = ''; isEnlargedImageLoading = false;"
+             title="关闭"></i>
+        </div>
         <img :src="enlargedImage"
-             @load="isEnlargedImageLoading = false"
-             @click.self.stop="enlargedImage = ''; isEnlargedImageLoading = false;">
-        <span @click.self.stop="openImage()">查看原图</span>
+             @load="isEnlargedImageLoading = false">
       </div>
     </div>
   </div>
