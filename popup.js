@@ -119,6 +119,11 @@ new Vue({
 
       axios.get(_this.apiURL + '/sessions.create')
         .then(function (res) {
+          if (res.status !== 200) {
+            _this.isQrCodeLoading = false;
+            _this.isUIEnabled = false;
+            return;
+          }
           _this.isUIEnabled = true;
           _this.uuid = res.data.uuid;
           _this.isQrCodeLoading = false;
@@ -126,7 +131,7 @@ new Vue({
         })
         .catch(function () {
           _this.isQrCodeLoading = false;
-          // _this.isUIEnabled = false;
+          _this.isUIEnabled = false;
           return;
         });
     },
@@ -223,6 +228,11 @@ new Vue({
         }
       })
         .then(function (response) {
+          if (response.status !== 200) {
+            _this.isNotificationLoading = false;
+            _this.isError = true;
+            return;
+          }
           const res = response.data;
           if (status === 'refresh') chrome.browserAction.setBadgeText({ text: '' });
 
@@ -250,6 +260,7 @@ new Vue({
           return;
         });
     },
+    // 通知列表滚动加载
     notificationScrolling() {
       let _this = this
       let notificationDom = document.getElementById('notification');
