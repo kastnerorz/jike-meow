@@ -96,6 +96,11 @@ div#notification {
   -webkit-overflow-scrolling: touch;
 }
 
+div#notification.empty {
+  background: url('../images/empty-ico.svg') center no-repeat;
+  background-size: 100px;
+}
+
 p#notification-loading,
 p#notification-error {
   cursor: pointer;

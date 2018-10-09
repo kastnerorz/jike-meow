@@ -238,19 +238,20 @@ new Vue({
           if (status === 'refresh') chrome.browserAction.setBadgeText({ text: '' });
 
           // 获取上次刷新动态的时间
+          if (res.data.length <= 0) {
+            _this.isNotificationLoading = false;
+            return;
+          }
           chrome.storage.local.get(null, function (result) {
             if (result['last-check-notifications-time']) _this.lastNotificationCheckingTime = result['last-check-notifications-time'];
-            for (var i = 0; i < res.data.length; i++) {
-              if ((new Date(res.data[i].createdAt)).getTime() <= _this.lastNotificationCheckingTime) {
-                res.data[i].isViewed = true;
-              }
-              _this.notifications.push(res.data[i]);
-            }
+            res.data.map(item => {
+              if ((new Date(item.createdAt)).getTime() <= _this.lastNotificationCheckingTime) item.isViewed = true;
+              _this.notifications.push(item);
+            });
 
             // 覆盖新的刷动态时间
-            var newTime = (new Date(_this.notifications[0].createdAt)).getTime();
             chrome.storage.local.set({
-              'last-check-notifications-time': newTime
+              'last-check-notifications-time': (new Date(_this.notifications[0].createdAt)).getTime()
             });
             _this.isNotificationLoading = false;
           });
