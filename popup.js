@@ -261,8 +261,12 @@ new Vue({
         });
     },
     // 通知列表滚动加载
-    notificationScrolling() {
+    notificationScrolling(e) {
       let _this = this
+      if (_this.enlargedImage && isUIEnabled) {
+        e.preventDefault();
+        return;
+      }
       let notificationDom = document.getElementById('notification');
       let scrollHeight = notificationDom.scrollHeight;
       let scrollTop = notificationDom.scrollTop;
