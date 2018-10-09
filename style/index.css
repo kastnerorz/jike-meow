@@ -231,6 +231,21 @@ p.n-repost-users-comment {
   color: #999;
 }
 
+button.n-comment-follow {
+  cursor: pointer;
+  display: block;
+  width: 80px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 2;
+  text-align: center;
+  color: #fff;
+  background: #2fbdfc;
+  border: 0;
+  border-radius: 14px;
+  outline: 0;
+}
+
 /* 通知 - 转发 */
 
 a.n-repost-avatar {

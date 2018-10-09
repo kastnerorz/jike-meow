@@ -300,6 +300,40 @@ new Vue({
         }
       }
     },
+    // 关注用户
+    followUser(item) {
+      let _this = this;
+      axios({
+        method: 'post',
+        url: _this.apiURL + '/1.0/userRelation/follow',
+        headers: { 'x-jike-access-token': _this.accessToken },
+        data: { username: item.actionItem.users[0].username }
+      })
+        .then(function (res) {
+          if (res.status !== 200) return;
+          item.actionItem.users[0].following = true;
+        })
+        .catch(function () {
+          return;
+        });
+    },
+    // 取消关注用户
+    unfollowUser(item) {
+      let _this = this;
+      axios({
+        method: 'post',
+        url: _this.apiURL + '/1.0/userRelation/unfollow',
+        headers: { 'x-jike-access-token': _this.accessToken },
+        data: { username: item.actionItem.users[0].username }
+      })
+        .then(function (res) {
+          if (res.status !== 200) return;
+          item.actionItem.users[0].following = false;
+        })
+        .catch(function () {
+          return;
+        });
+    },
     // 历史阅读位置记录
     toggleNotificationFunction(response) {
       chrome.storage.local.set({
