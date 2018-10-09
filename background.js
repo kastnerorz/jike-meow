@@ -4,17 +4,6 @@ let socket;
 
 // 创建 chrome 计时器
 chrome.runtime.onInstalled.addListener(function () {
-  refreshToken();
-  chrome.alarms.clearAll();
-  chrome.alarms.create('refreshToken', {
-    delayInMinutes: 10,
-    periodInMinutes: 10
-  });
-  // 每十分钟刷新一次 token
-  chrome.alarms.onAlarm.addListener(function () {
-    refreshToken();
-  });
-  // 启动 Socket 连接
   newSocket();
 });
 
@@ -22,7 +11,15 @@ chrome.runtime.onInstalled.addListener(function () {
 chrome.runtime.onMessage.addListener(
   function (request) {
     if (request.logged_in === true) {
-      refreshToken();
+      chrome.alarms.clearAll();
+      chrome.alarms.create('refreshToken', {
+        delayInMinutes: 10,
+        periodInMinutes: 10
+      });
+      // 每十分钟刷新一次 token
+      chrome.alarms.onAlarm.addListener(function () {
+        refreshToken();
+      });
       newSocket();
     }
   });

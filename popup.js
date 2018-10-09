@@ -32,7 +32,7 @@ new Vue({
       enlargedImage: '' // 图片查看器
     }
   },
-  mounted() {
+  created() {
     let _this = this;
     _this.isQrCodeLoading = false;
 
