@@ -93,9 +93,10 @@ new Vue({
       }
     });
   },
-  updated() {
-    let _this = this;
-    if (_this.uuid) _this.newQRCode('jike://page.jk/web?url=https%3A%2F%2Fruguoapp.com%2Faccount%2Fscan%3Fuuid%3D' + _this.uuid + '&displayHeader=false&displayFooter=false');
+  watch: {
+    uuid() {
+      let _this = this;
+    }
   },
   methods: {
     // 二维码生成
@@ -112,6 +113,13 @@ new Vue({
         correctLevel: QRCode.CorrectLevel.H
       });
     },
+    // UI Enabled
+    enabledUI() {
+      return new Promise(resolve => {
+        this.isUIEnabled = true;
+        resolve();
+      });
+    },
     // 获取 Session
     getUuid() {
       let _this = this;
@@ -125,9 +133,11 @@ new Vue({
             _this.isUIEnabled = false;
             return;
           }
-          _this.isUIEnabled = true;
           _this.uuid = res.data.uuid;
           _this.isQrCodeLoading = false;
+          _this.enabledUI().then(() => {
+            _this.newQRCode('jike://page.jk/web?url=https%3A%2F%2Fruguoapp.com%2Faccount%2Fscan%3Fuuid%3D' + _this.uuid + '&displayHeader=false&displayFooter=false');
+          })
           _this.waitForLogin();
         })
         .catch(function () {
