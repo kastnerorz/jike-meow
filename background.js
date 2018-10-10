@@ -4,6 +4,7 @@ let socket;
 
 // 创建 chrome 计时器
 chrome.runtime.onInstalled.addListener(function () {
+  refreshToken();
   newSocket();
 });
 
