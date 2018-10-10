@@ -93,11 +93,6 @@ new Vue({
       }
     });
   },
-  watch: {
-    uuid() {
-      let _this = this;
-    }
-  },
   methods: {
     // 二维码生成
     newQRCode(url) {
