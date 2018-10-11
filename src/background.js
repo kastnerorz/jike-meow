@@ -5,7 +5,6 @@ let socket;
 // 创建 chrome 计时器
 chrome.runtime.onInstalled.addListener(function () {
   refreshToken();
-  newSocket();
 });
 
 // 监听 popup.js 的回调
