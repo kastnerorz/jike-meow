@@ -31,6 +31,7 @@
          v-if="authToken && refreshToken && accessToken && notifications && isUIEnabled">
       <div class="n-item"
            v-for="item in notifications"
+           :key="item.id"
            :class="{ viewed: item.isViewed && isNotificationCheckingFunctionEnabled }">
         <!-- 赞了你的动态 -->
         <div class="n-item-list"
@@ -169,7 +170,7 @@
             <p class="n-repost-users-name">{{ item.actionItem.users[0].screenName }} 转发了你的动态</p>
             <p class="n-repost-users-comment">{{ item.actionItem.content ? item.actionItem.content + '&nbsp;' : '' }}
               <a @click.self.stop="previewImage(item.actionItem.pictures[0].picUrl)"
-                 v-if="item.actionItem.pictures.length > 0">查看图片</a>
+                 v-if="item.actionItem.pictures && item.actionItem.pictures.length > 0">查看图片</a>
             </p>
           </div>
           <div class="n-like-inline-block">
@@ -207,7 +208,7 @@
             </p>
             <p class="n-comment-users-comment">{{ item.actionItem.content ? item.actionItem.content + '&nbsp;' : '' }}
               <a @click.self.stop="previewImage(item.actionItem.pictures[0].picUrl)"
-                 v-if="item.actionItem.pictures.length > 0">查看图片</a>
+                 v-if="item.actionItem.pictures && item.actionItem.pictures.length > 0">查看图片</a>
             </p>
           </div>
           <div class="n-like-inline-block">
@@ -247,7 +248,7 @@
             </p>
             <p class="n-comment-users-comment">{{ item.actionItem.content ? item.actionItem.content + '&nbsp;' : '' }}
               <a @click.self.stop="previewImage(item.actionItem.pictures[0].picUrl)"
-                 v-if="item.actionItem.pictures.length > 0">查看图片</a>
+                 v-if="item.actionItem.pictures && item.actionItem.pictures.length > 0">查看图片</a>
             </p>
           </div>
           <div class="n-like-inline-block">
@@ -296,7 +297,7 @@
             </p>
             <p class="n-comment-users-comment">{{ item.actionItem.content ? item.actionItem.content + '&nbsp;' : '' }}
               <a @click.self.stop="previewImage(item.actionItem.pictures[0].picUrl)"
-                 v-if="item.actionItem.pictures.length > 0">查看图片</a>
+                 v-if="item.actionItem.pictures && item.actionItem.pictures.length > 0">查看图片</a>
             </p>
           </div>
           <div class="n-like-inline-block">
@@ -330,7 +331,7 @@
             </p>
             <p class="n-comment-users-comment">{{ item.actionItem.content ? item.actionItem.content + '&nbsp;' : '' }}
               <a @click.self.stop="previewImage(item.actionItem.pictures[0].picUrl)"
-                 v-if="item.actionItem.pictures.length > 0">查看图片</a>
+                 v-if="item.actionItem.pictures && item.actionItem.pictures.length > 0">查看图片</a>
             </p>
           </div>
           <div class="n-like-inline-block">
