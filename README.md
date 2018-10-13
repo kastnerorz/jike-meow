@@ -20,11 +20,11 @@
 
 ## 项目结构
 
-* **./images** Chrome Store, GitHub, 图标等素材
+* **./images** 图片, 图标等素材
 * **./scripts** 引用的第三方库和内容脚本
-* **./scripts/store-token.js** 「网页登录」脚本
-* **background.js** 「开启消息通知角标」脚本
-* **popup.js** 插件主视图的功能
+* **./scripts/store-token.js** 网页登录脚本
+* **background.js** 计时器脚本
+* **popup.js** 插件主视图脚本
 
 ## 源代码安装方法
 
