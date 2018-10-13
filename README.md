@@ -1,6 +1,6 @@
 # 即刻喵 🐱
 
-![Chrome Store](./src/images/chrome_1@2x.jpg)
+![Chrome Store](./images/chrome_1@2x.jpg)
 
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/gahlkoaglgmbpjoecaahganpccafojaa.svg)](https://chrome.google.com/webstore/detail/jike-web-qr/gahlkoaglgmbpjoecaahganpccafojaa?hl=zh-CN)
 ![rating](https://img.shields.io/chrome-web-store/stars/gahlkoaglgmbpjoecaahganpccafojaa.svg)
