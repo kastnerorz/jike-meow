@@ -34,15 +34,7 @@
 3. 点击左上角 Load unpacked 选择解压缩后的文件夹
 4. 确认即可完成安装
 
-## 项目结构
-
-* **./images** 图片, 图标等素材
-* **./scripts** 引用的第三方库和内容脚本
-* **./scripts/store-token.js** 网页登录脚本
-* **background.js** 计时器脚本
-* **popup.js** 插件主视图脚本
-
-## 前言
+## 写在前面
 
 不同于标准的前端开发，Chrome Extensions 拥有完全不同的 API 和底层设计，但这些并不影响你通过 React 或 Vue 类似的框架，来构建一个完整的 Chrome 应用，甚至还能在 GitHub 上找到一些第三方「脚手架」来达到这一目的。前提是你得熟悉项目的结构和基本规范。
 
@@ -50,6 +42,14 @@
 
 * 官方开发文档：[传送门](https://developer.chrome.com/extensions)
 * 非官方中文开发文档：[传送门](https://crxdoc-zh.appspot.com/extensions)
+
+## 项目结构
+
+* **./images** 图片, 图标等素材
+* **./scripts** 引用的第三方库和内容脚本
+* **./scripts/store-token.js** 网页登录脚本
+* **background.js** 计时器脚本
+* **popup.js** 插件主视图脚本
 
 ## F.A.Q
 
