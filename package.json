@@ -1,0 +1,22 @@
+{
+  "name": "jike-meow",
+  "version": "1.2.1",
+  "description": "3rd Party Jike app chrome extension built with Vue.",
+  "author": "coder_ysj@outlook.com",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js --optimize-minimize"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coder-ysj/jike-meow.git"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.19",
+    "html-webpack-plugin": "^3.2.0",
+    "uglifyjs-webpack-plugin": "^2.0.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  }
+}
