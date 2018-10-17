@@ -47,14 +47,10 @@ new Vue({
     // Get token from chrome storage
     chrome.storage.local.get(null, function (result) {
       if (result['auth-token'] && result['refresh-token'] && result['access-token']) {
-        _this.authToken = result['auth-token'];
-        _this.refreshToken = result['refresh-token'];
-        _this.accessToken = result['access-token'];
-        _this.isUIEnabled = true;
-        _this.getNotificationList('refresh');
         if (result['notification-function']) {
           _this.isNotificationCheckingFunctionEnabled = (result['notification-function'] === 'true');
         }
+        _this.authToken = result['auth-token'];
         // Refresh token from chrome storage
         axios({
           url: _this.apiURL + '/app_auth_tokens.refresh',
@@ -65,14 +61,18 @@ new Vue({
         })
           .then(response => {
             if (response.status !== 200) {
-              alert('系统错误');
+              alert('系统错误, 若多次刷新均无法获取数据, 建议重新登录');
               return;
             }
             const data = response.data;
+            _this.refreshToken = data['x-jike-refresh-token'];
+            _this.accessToken = data['x-jike-access-token'];
+            _this.isUIEnabled = true;
             chrome.storage.local.set({
               'refresh-token': data['x-jike-refresh-token'],
               'access-token': data['x-jike-access-token']
             });
+            _this.getNotificationList('refresh');
             chrome.runtime.sendMessage({
               logged_in: true
             });
