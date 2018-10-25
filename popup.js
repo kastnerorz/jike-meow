@@ -44,6 +44,15 @@ new Vue({
       _this.currentPageURL = tabs[0].url;
     });
 
+    // chrome.notifications.create(null, {
+    //   type: 'basic',
+    //   iconUrl: 'https://s3.ifanr.com/wp-content/uploads/2018/01/5-17.jpg!100',
+    //   title: '有人 @ 了你',
+    //   message: 'Hello'
+    // });
+
+    // chrome.notifications.onClicked.addListener(function () { });
+
     // Get token from chrome storage
     chrome.storage.local.get(null, function (result) {
       if (result['auth-token'] && result['refresh-token'] && result['access-token']) {

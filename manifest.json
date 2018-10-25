@@ -5,10 +5,11 @@
   "description": "可独立使用的「即刻」非官方通知插件，并为网页版（web.okjike.com）提供一键登录功能。",
   "permissions": [
     "activeTab",
-    "tabs",
-    "storage",
     "alarms",
     "background",
+    "notifications",
+    "storage",
+    "tabs",
     "<all_urls>"
   ],
   "incognito": "not_allowed",
